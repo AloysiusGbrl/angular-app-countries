@@ -1,0 +1,40 @@
+import { Component, NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { ByCapitalPageComponent } from './pages/by-capital-page/by-capital-page.component';
+import { ByCountryPageComponent } from './pages/by-country-page/by-country-page.component';
+import { ByRegionPageComponent } from './pages/by-region-page/by-region-page.component';
+import { CountryPageComponent } from './pages/country-page/country-page.component';
+
+const routes:Routes=[
+  {
+    path:'by-capital',
+    component:ByCapitalPageComponent,
+  },
+  {
+    path:'by-country',
+    component:ByCountryPageComponent,
+  },
+  {
+    path:'by-region',
+    component:ByRegionPageComponent,
+  },
+  {
+    path:'by/:id',//Para esta ruta pediremos de antemano un Id
+    component:CountryPageComponent,
+  },
+  {/*eN CASO DE QUE EL SUSUARIO NO COLOQUE EL DIRECTORIO SIN ALGUNO DE ESTAS PARABRAS DESPUÉS DE UN SLASH,
+    SE CARGARÁ ESTO POR DEFECTO:*///(http://localhost:4200) por ejemplo
+    path:'**',
+    redirectTo:'by-capital'
+  }
+]
+
+@NgModule({
+  imports: [
+    RouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule
+  ],
+})
+export class CountriesRoutingModule { }
